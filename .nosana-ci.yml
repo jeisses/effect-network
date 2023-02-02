@@ -8,7 +8,7 @@ global:
             - master
 jobs:
     - name: compile
-      image: jeisses/eosio-cdt-make:v1.8.1
+      image: jeisses/eos-cdt-make:v1.8.1
       commands:
         - make all
     - name: install
