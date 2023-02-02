@@ -8,7 +8,7 @@ global:
             - master
 jobs:
     - name: compile
-      image: jeisses/eos-cdt-make:v1.8.1
+      image: registry.hub.docker.com/jeisses/eos-cdt-make:latest
       commands:
         - make all
     - name: install
