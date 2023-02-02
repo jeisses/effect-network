@@ -5,7 +5,7 @@ global:
     image: registry.hub.docker.com/library/node:18
     trigger:
         branch:
-            - cicd
+            - master
 jobs:
     - name: compile
       image: jeisses/eosio-cdt-make:v1.8.1
