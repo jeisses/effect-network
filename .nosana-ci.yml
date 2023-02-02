@@ -1,0 +1,20 @@
+nosana:
+    description: Effect Network
+
+global:
+    image: registry.hub.docker.com/library/node:18
+    trigger:
+        branch:
+            - cicd
+jobs:
+    - name: compile
+      image: jeisses/eosio-cdt-make:v1.8.1
+      commands:
+        - make all
+    - name: install
+      commands:
+          - npm ci
+          - npm run lumo e2e.macros
+      artifacts:  
+          - name: node_modules
+            path: ./node_modules/
