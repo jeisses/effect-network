@@ -2,7 +2,7 @@ nosana:
     description: Effect Network
 
 global:
-  image: node:16
+  image: node:18
   trigger:
     branch:
       - master
@@ -22,7 +22,6 @@ jobs:
     image: node:16
     commands:
       - npm ci
-      # - npm run lumo e2e.force
     resources:
       - name: contracts
         path: build
@@ -52,7 +51,7 @@ jobs:
       - npm run lumo e2e.token
       #- npm run lumo e2e.stake
       - tmux list-sessions
-      #- tmux kill-session -t 0
+      - tmux kill-session -t 0
     resources:
       - name: node_modules
         path: .
