@@ -18,16 +18,6 @@ jobs:
           - contracts/**/*.{wasm,abi}
         name: contracts
 
-  - name: npm install
-    image: node:16
-    commands:
-      - npm ci
-    resources:
-      - name: contracts
-        path: build
-    artifacts:
-      - name: node_modules
-        path: node_modules
 
   - name: eos-cljs
     image: registry.hub.docker.com/bitnami/git:latest
@@ -39,6 +29,17 @@ jobs:
     artifacts:
       - name: eos-cljs
         path: eos-cljs
+
+  - name: npm install
+    image: node:16
+    commands:
+      - npm ci
+    resources:
+      - name: eos-cljs
+        path: .
+    artifacts:
+      - name: node_modules
+        path: node_modules
 
   - name: eosio
     image: effectai/eos207-node16
