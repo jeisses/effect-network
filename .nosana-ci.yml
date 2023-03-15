@@ -47,8 +47,7 @@ jobs:
       - ls -lha eos-cljs
       - npm --version
       - tmux new -d 'nodeos -e -p eosio --plugin eosio::chain_api_plugin --delete-all-blocks --access-control-allow-origin="*" --access-control-allow-headers="*" --plugin eosio::state_history_plugin --disable-replay-opts'
-      - sleep 5
-      - tmux capture-pane -t 0 -S -10
+      - sleep 2
       #- npm run lumo e2e.dao
       #- npm run lumo e2e.force
       - npm run lumo e2e.token
