@@ -54,8 +54,9 @@ jobs:
     commands:
       - ls -lha eos-cljs
       - npm --version
-      - tmux new -d 'nodeos -e -p eosio --plugin eosio::chain_api_plugin --delete-all-blocks --access-control-allow-origin="*" --access-control-allow-headers="*" --plugin eosio::state_history_plugin --disable-replay-opts'
+      - tmux new -d 'nodeos -e -p eosio --plugin eosio::chain_api_plugin --delete-all-blocks --access-control-allow-origin="*" --access-control-allow-headers="*" --plugin eosio::state_history_plugin --disable-replay-opts --http-server-address=0.0.0.0:8888'
       - sleep 2
+      - curl http://127.0.0.1:8888/v1/chain/get_info
       #- npm run lumo e2e.dao
       #- npm run lumo e2e.force
       - npm run lumo e2e.token
