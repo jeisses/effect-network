@@ -63,6 +63,7 @@ jobs:
       #- npm run lumo e2e.stake
       - tmux list-sessions
       - tmux kill-session -t 0
+      - killall nodeos
     resources:
       - name: node_modules
         path: .
