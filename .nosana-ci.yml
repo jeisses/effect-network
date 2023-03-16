@@ -9,13 +9,13 @@ global:
       - cicd
 
 jobs:
-  - name: docker
-    image: nosana/podman:latest
-    environment:
-      CONTAINER_HOST: tcp://localhost:8080
-    commands:
-      - docker build -f ci/Dockerfile . -t my-container
-      - docker images
+  #- name: docker
+  #  image: nosana/podman:latest
+  #  environment:
+  #    CONTAINER_HOST: tcp://localhost:8080
+  #  commands:
+  #    - docker build -f ci/Dockerfile . -t my-container
+  #    - docker images
 
   - name: build contracts
     image: effectai/eos-cdt-make
@@ -40,7 +40,7 @@ jobs:
   - name: npm install
     image: node:16
     commands:
-      - ls -lha
+      - ls -lha node_modules
       - npm ci
     resources:
       - name: eos-cljs
