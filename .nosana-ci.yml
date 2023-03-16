@@ -9,6 +9,14 @@ global:
       - cicd
 
 jobs:
+  - name: docker
+    image: nosana/podman:latest
+    environment:
+      CONTAINER_HOST: tcp://localhost:8080
+    commands:
+      - docker build -f ci/Dockerfile . -t my-container
+      - docker images
+
   - name: build contracts
     image: effectai/eos-cdt-make
     commands:
