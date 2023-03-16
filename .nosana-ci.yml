@@ -17,15 +17,6 @@ jobs:
   #    - docker build -f ci/Dockerfile . -t my-container
   #    - docker images
 
-  - name: build contracts
-    image: effectai/eos-cdt-make
-    commands:
-      - make all
-    artifacts:
-      - paths:
-          - contracts/**/*.{wasm,abi}
-        name: contracts
-
   - name: eos-cljs
     image: registry.hub.docker.com/bitnami/git:latest
     commands:
@@ -41,7 +32,7 @@ jobs:
     image: node:16
     commands:
       - ls -lha
-      - npm ci
+      - npm install
     resources:
       - name: eos-cljs
         path: .
@@ -49,6 +40,15 @@ jobs:
       - name: node_modules
         path: node_modules
 
+  - name: build contracts
+    image: effectai/eos-cdt-make
+    commands:
+      - make all
+    artifacts:
+      - paths:
+          - contracts/**/*.{wasm,abi}
+        name: contracts
+        
   - name: eosio
     image: effectai/eos207-node16
     commands:
